@@ -8,7 +8,7 @@ $ cp env-example .env
 
 create rails project
 ```
-$ docker-compose run --rm web rails new . --force --database=mysql --skip-bundle
+$ docker-compose run --rm web rails new . --force --database=mysql --skip-bundle --skip-git
 ```
 
 edit .gitignore
