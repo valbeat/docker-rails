@@ -31,12 +31,12 @@ default: &default
 
 6. Create database `$ docker-compose run --rm web rake db:create`
 
-7. RUN `$ docker-compose up -d`
-
-8. Scaffold
+7. Scaffold
 ```
 $ docker-compose run --rm web rails g scaffold Post title:string body:text
 $ docker-compose run --rm web rake db:migrate
 ```
+
+8. RUN `$ docker-compose up -d`
 
 9. Open http://localhost:3000/posts
