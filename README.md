@@ -1,23 +1,23 @@
 # Docker Rails
 
 ## Usage
-copy environment variables file
-```
-$ cp env-example .env
-```
 
-create rails project
+1. Create new rails project
 ```
 $ docker-compose run --rm web rails new . --force --database=mysql --skip-bundle --skip-git
 ```
 
-edit .gitignore
+2. Modify Gemfile to uncomment
 ```
-# add .env
-.env
+gem 'mini_racer', platforms: :ruby
 ```
 
-edit config/database.yml
+3. Copy environment variables file
+```
+$ cp env-example .env
+```
+
+4. Modify `config/database.yml` as following
 ```
 default: &default
   adapter: mysql2
@@ -28,16 +28,14 @@ default: &default
   host: db
 ```
 
-create database
-```
-$ docker-compose run --rm web rake db:create
-```
+5. Create database `$ docker-compose run --rm web rake db:create`
 
-scaffold
+7. RUN `$ docker-compose up -d`
+
+8. Scaffold
 ```
 $ docker-compose run --rm web rails g scaffold Post title:string body:text
 $ docker-compose run --rm web rake db:migrate
-$ docker-compose up -d
 ```
 
-open 'http://localhost:3000/posts'
+9. Open http://localhost:3000/posts
