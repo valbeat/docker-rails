@@ -27,8 +27,9 @@ default: &default
   password: <%= ENV.fetch("MYSQL_ROOT_PASSWORD") %>
   host: db
 ```
+5. Run `docker-compose build`
 
-5. Create database `$ docker-compose run --rm web rake db:create`
+6. Create database `$ docker-compose run --rm web rake db:create`
 
 7. RUN `$ docker-compose up -d`
 
