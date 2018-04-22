@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    container_name: ${APP_NAME}_db
+    image: mysql:5.7.21
+    ports:
+      - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/ruby/Dockerfile
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+volumes:
+  data:
